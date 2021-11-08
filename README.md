@@ -1,1 +1,1 @@
-<h1 align="center">AirBnB clone - THe console</h1>
+<h1 align="center">AirBnB clone - The console</h1>
