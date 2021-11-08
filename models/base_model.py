@@ -1,22 +1,32 @@
 #!/usr/bin/python3
 '''Module contains BaseModel class'''
-import json
-import uuid
-import datetime
 
+
+#import json
+import uuid
+from datetime import datetime
 
 class BaseModel:
     '''
     Class contains common methods/attributes for other classes
     '''
 
-    def __init__(self, id=None, name=None, my_number=None):
+    def __init__(self, *args, **kwargs):
         '''Class instantiator'''
-        self.id = str(uuid.uuid4())
-        self.name = name
-        self.my_number = my_number
-        self.created_at = datetime.datetime.now()
-        self.updated_at = datetime.datetime.now()
+        if kwargs is not None:
+            if 'name' in kwargs:
+                self.name = kwargs['name']
+            if 'id' in kwargs:
+                self.id = kwargs['id']
+            if 'my_number' in kwargs:
+                self.my_number = kwargs['my_number']
+            if 'created_at' in kwargs:
+                self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            if 'update_at' in kwargs:
+                self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     '''Magic Methods'''
 
@@ -28,7 +38,7 @@ class BaseModel:
 
     def save(self):
         '''Method updates instance attribute updated_at'''
-        self.update_at = datetime.datetime.now()
+        self.update_at = datetime.now()
 
     def to_dict(self):
         '''Method returns a dict containing all k's/v's of __dict__'''
