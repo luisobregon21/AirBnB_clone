@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Module contains BaseModel class'''
+'''Module contains FileStorage class'''
 import json
 import uuid
 from datetime import datetime
@@ -7,7 +7,8 @@ from datetime import datetime
 
 class FileStorage:
     '''
-    Class contains...
+    Class contains methods that serialize instances to a JSON file
+    and deserializes a JSON file to instances
     '''
 
     __file__path = "file.json"
