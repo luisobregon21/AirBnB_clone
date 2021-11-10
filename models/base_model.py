@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 '''Module contains BaseModel class'''
-import json
 import uuid
 from datetime import datetime
-from . import storage
+from models import storage
 
 
 class BaseModel:
@@ -40,7 +39,6 @@ class BaseModel:
     def save(self):
         '''Method updates instance attribute updated_at'''
         self.update_at = datetime.now()
-        storage.save()
 
     def to_dict(self):
         '''Method returns a dict containing all k's/v's of __dict__'''
