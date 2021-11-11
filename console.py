@@ -14,7 +14,7 @@ class HBNBCommand(cmd.Cmd):
     @help: needs to be updated and docummented
     @Enter should not execute with an empty line
     '''
-    def do_bye(self):
+    def do_quit(self):
         'closing HELL, and exit:  BYE'
         print('Thank you for being you')
         self.close()
