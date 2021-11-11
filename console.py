@@ -2,32 +2,32 @@
 ''' Module contains the entry point of the command interpreter '''
 
 import cmd
+#from models import storage
 
 
 class HBNBCommand(cmd.Cmd):
-    intro = 'Welcome to HELL.   Type help or ? to list commands.\n'
-    prompt = '(CBRON)'
+    ''' Class holds commands that a user can use in console '''
+
+    intro = 'Welcome to HELL. Type help or ? to list commands.\n'
+    prompt = '(CBRON) '
     file = None
 
-    ''' Basic commands below: 
-    @quit and EOF to exit program
-    @help: needs to be updated and docummented
-    @Enter should not execute with an empty line
-    '''
-    def do_quit(self):
-        'closing HELL, and exit:  BYE'
+    ''' ¡¡¡¡ in the works !!!!
+    def do_create(self, line):
+        if len(line) == 0:
+            print("** class name missing ** ")
+        else:
+            storage.new(line)
+            storage.save() '''
+
+    def do_quit(self, line):
+        ''' Command exists program: GOOD BYE'''
         print('Thank you for being you')
-        self.close()
         return True
 
-    def close(self):
-        if self.file:
-            self.file.close()
-            self.file = None
- 
     def do_EOF(self, line):
-        ''' Method deals with EOF '''
-        print()
+        ''' Command exists program: See you soon. '''
+        print('BYE BUDDY')
         return True
 
 if __name__ == '__main__':
