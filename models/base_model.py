@@ -2,7 +2,7 @@
 '''Module contains BaseModel class'''
 import uuid
 from datetime import datetime
-from models import storage
+from models.__init__ import storage
 
 
 class BaseModel:
@@ -12,22 +12,18 @@ class BaseModel:
 
     def __init__(self, *args, **kwargs):
         '''Class instantiator'''
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        if len(kwargs) == 0:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            storage.new(self)
+        else:
+            del kwargs['']
+            kwargs['created_at'] = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            kwargs['updated_at'] = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
-        if kwargs is not None:
-            if 'id' in kwargs:
-                self.id = kwargs['id']
-            if 'created_at' in kwargs:
-                self.created_at = datetime.strptime(kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            if 'my_number' in kwargs:
-                self.my_number = kwargs['my_number']
-            if 'update_at' in kwargs:
-                self.updated_at = datetime.strptime(kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
-            if 'name' in kwargs:
-                self.name = kwargs['name']
-     
     '''Magic Methods'''
 
     def __str__(self):
@@ -39,6 +35,7 @@ class BaseModel:
     def save(self):
         '''Method updates instance attribute updated_at'''
         self.update_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         '''Method returns a dict containing all k's/v's of __dict__'''
