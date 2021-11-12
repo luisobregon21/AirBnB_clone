@@ -2,6 +2,7 @@
 '''Module contains FileStorage class'''
 import json
 from models.base_model import BaseModel
+from models.user import User
 
 class FileStorage:
     '''
@@ -22,18 +23,18 @@ class FileStorage:
     def save(self):
         '''Method Serializes'''
         new_dic = {}
-        with open(self.__file_path, 'w', encoding='utf-8') as f:
+        with open(self.__file_path, 'w') as f:
             for key, val in self.__objects.items():
                 new_dic[key] = val.to_dict()
-            json.dump(new_dic, f)
+            json.dump(new_dic, f, default=str)
 
     def reload(self):
         ''' Method Deserializes '''
         temp_dic = {}
         try:
-            with open(self.__file_path, 'r', encoding='utf-8') as f:
+            with open(self.__file_path, 'r') as f:
                 temp_dic = json.loads(f.read())
                 for key, val in temp_dic.items():
-                    self.__objects[key] = BaseModel(**val)
+                        self.__objects[key] = eval(val["__class__"])(**val)
         except IOError:
             pass

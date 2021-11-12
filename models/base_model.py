@@ -39,11 +39,8 @@ class BaseModel:
 
     def to_dict(self):
         '''Method returns a dict containing all k's/v's of __dict__'''
-        return {
-            'my_number': self.my_number,
-            'name': self.name,
-            '__class__': self.__class__.__name__,
-            'updated_at': self.updated_at.isoformat(),
-            'id': self.id,
-            'created_at': self.created_at.isoformat()
-        }
+        new_dict = self.__dict__.copy()
+        new_dict["created_at"] = self.created_at.isoformat()
+        new_dict["updated_at"] = self.updated_at.isoformat()
+        new_dict["__class__"] = self.__class__.__name__
+        return new_dict
