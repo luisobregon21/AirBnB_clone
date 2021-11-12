@@ -9,7 +9,7 @@ from models import hbnb_classes, storage
 class HBNBCommand(cmd.Cmd):
     ''' Class holds commands that a user can use in console '''
 
-    intro = 'Welcome to HELL. Type help or ? to list commands.\n'
+    intro = 'Welcome My Love. Type help or ? to list commands.\n'
     prompt = '(hbnb) '
     file = None
 
@@ -66,6 +66,7 @@ class HBNBCommand(cmd.Cmd):
     def do_destroy(self, arg):
         ''' Deletes instance based on the class'''
         class_list = arg.split(" ") 
+
         try:
             key = class_list[0] + "." + class_list[1]
         except:
@@ -81,6 +82,37 @@ class HBNBCommand(cmd.Cmd):
                     print("** no instance found **")
                 else:
                     del storage.all()[key]
+                    storage.save()
+            else:
+                print("** class doesn't exist **")
+
+    def do_update(self, arg):
+        ''' Updates an instance based on the class name '''
+        class_list = arg.split(" ")
+        leng = len(class_list)
+
+        try:
+            key = class_list[0] + "." + class_list[1]
+        except:
+            pass
+
+        if len(arg) == 0:
+            print("** class name missing **")
+        else:
+            if class_list[0] in hbnb_classes:
+                if leng < 2:
+                    print("** instance id missing **")
+                elif key not in storage.all().keys():
+                    print("** no instance found **")
+                elif leng < 3:
+                    print("** attribute name missing **")
+                elif leng < 4:
+                    print("** value missing **")
+                else:
+                  for cls, instance in storage.all().items():
+                    if class_list[1] == instance.id:
+                        setattr(instance, class_list[2], class_list[3])
+                        storage.save()
             else:
                 print("** class doesn't exist **")
 
