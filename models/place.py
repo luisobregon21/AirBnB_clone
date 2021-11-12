@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''Module contains class Place'''
-from AirBnB_clone.models import amenity
 from models.base_model import BaseModel
 
 
