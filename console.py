@@ -24,7 +24,6 @@ class HBNBCommand(cmd.Cmd):
         else:
             print("** class doesn't exist **")
 
-    def do_show(self, line):
 
 
     def do_quit(self, line):
