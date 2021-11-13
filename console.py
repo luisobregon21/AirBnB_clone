@@ -5,18 +5,14 @@ from types import new_class
 from models import hbnb_classes, storage
 
 
-''' REMEMBER TO DELETE MESSAGES '''
-
-
 class HBNBCommand(cmd.Cmd):
-    ''' Class holds commands that a user can use in console '''
+    '''Class holds commands that a user can use in console'''
 
-    intro = 'Welcome My Love. Type help or ? to list commands.\n'
+    intro = 'Welcome to HBNB. Type help or ? to list commands.\n'
     prompt = '(hbnb) '
-    file = None
 
     def do_create(self, arg):
-        ''' Creates an instance of the specified class'''
+        '''Creates an instance of the specified class\n'''
         if len(arg) == 0:
             print("** class name missing ** ")
         elif arg in hbnb_classes:
@@ -28,7 +24,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
 
     def do_all(self, arg):
-        ''' Prints all instances based or not on the class name.'''
+        '''Prints all instances based or not on the class name.\n'''
         all_objs = storage.all()
         if len(arg) == 0:
             for obj_id in all_objs.keys():
@@ -44,7 +40,7 @@ class HBNBCommand(cmd.Cmd):
                         print(val)
 
     def do_show(self, arg):
-        ''' Shows instance based on the class'''
+        '''Shows instance based on the class\n'''
         class_list = arg.split(" ")
         try:
             key = class_list[0] + "." + class_list[1]
@@ -65,7 +61,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_destroy(self, arg):
-        ''' Deletes instance based on the class'''
+        '''Deletes instance based on the class\n'''
         class_list = arg.split(" ")
 
         try:
@@ -88,7 +84,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn't exist **")
 
     def do_update(self, arg):
-        ''' Updates an instance based on the class name '''
+        '''Updates an instance based on the class name\n'''
         class_list = arg.split(" ")
         leng = len(class_list)
 
@@ -119,17 +115,15 @@ class HBNBCommand(cmd.Cmd):
 
     ''' Basic Commands below'''
     def do_quit(self, arg):
-        ''' Command exists program: GOOD BYE'''
-        print('Thank you for being you')
+        '''QUIT command exists program\n'''
         return True
 
     def do_EOF(self, arg):
-        ''' Command exists program: See you soon. '''
-        print('BYE BUDDY: Do not be a fucker')
+        '''EOF Command exists program\n'''
         return True
 
-    def Enter(self):
-        ''' When there is no input '''
+    def emptyline(self):
+        '''When there is no input '''
         pass
 
 
