@@ -1,10 +1,12 @@
 #!/usr/bin/python3
 ''' Module contains the entry point of the command interpreter '''
-''' REMEMBER TO DELETE MESSAGES '''
-
 import cmd
 from types import new_class
 from models import hbnb_classes, storage
+
+
+''' REMEMBER TO DELETE MESSAGES '''
+
 
 class HBNBCommand(cmd.Cmd):
     ''' Class holds commands that a user can use in console '''
@@ -43,7 +45,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         ''' Shows instance based on the class'''
-        class_list = arg.split(" ") 
+        class_list = arg.split(" ")
         try:
             key = class_list[0] + "." + class_list[1]
         except:
@@ -62,10 +64,9 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** class doesn't exist **")
 
-
     def do_destroy(self, arg):
         ''' Deletes instance based on the class'''
-        class_list = arg.split(" ") 
+        class_list = arg.split(" ")
 
         try:
             key = class_list[0] + "." + class_list[1]
@@ -73,7 +74,7 @@ class HBNBCommand(cmd.Cmd):
             pass
 
         if not arg:
-            print("** class name missing ** ")
+            print("** class name missing **")
         else:
             if class_list[0] in hbnb_classes:
                 if len(class_list) < 2:
@@ -109,13 +110,12 @@ class HBNBCommand(cmd.Cmd):
                 elif leng < 4:
                     print("** value missing **")
                 else:
-                  for cls, instance in storage.all().items():
-                    if class_list[1] == instance.id:
-                        setattr(instance, class_list[2], class_list[3])
-                        storage.save()
+                    for cls, instance in storage.all().items():
+                        if class_list[1] == instance.id:
+                            setattr(instance, class_list[2], class_list[3])
+                            storage.save()
             else:
                 print("** class doesn't exist **")
-
 
     ''' Basic Commands below'''
     def do_quit(self, arg):
