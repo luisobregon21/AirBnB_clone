@@ -11,6 +11,28 @@ class HBNBCommand(cmd.Cmd):
     intro = 'Welcome to HBNB. Type help or ? to list commands.\n'
     prompt = '(hbnb) '
 
+    def default(self, arg):
+        '''Runs class commands: <class name>.command()'''
+        arg_list = arg.split('.')
+        if len(arg_list) == 2:
+            if arg_list[0] in hbnb_classes:
+                if arg_list[1] == "all()":
+                    self.do_all(arg_list[0])
+                elif arg_list[1] == "count()":
+                    self.do_count(arg_list[0])
+
+    def do_count(self, arg):
+        '''Counts number of instances of a class'''
+        all_objs = storage.all()
+        count = 0
+        if arg not in hbnb_classes:
+            print("** class doesn't exist **")
+        else:
+            for key in all_objs.keys():
+                if arg in key:
+                    count += 1
+            print(count)
+
     def do_create(self, arg):
         '''Creates an instance of the specified class\n'''
         if len(arg) == 0:
