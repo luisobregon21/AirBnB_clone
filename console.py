@@ -8,7 +8,7 @@ from models import hbnb_classes, storage
 class HBNBCommand(cmd.Cmd):
     '''Class holds commands that a user can use in console'''
 
-    intro = 'Welcome to HBNB. Type help or ? to list commands.\n'
+    #intro = 'Welcome to HBNB. Type help or ? to list commands.\n'
     prompt = '(hbnb) '
 
     def default(self, arg):
