@@ -16,3 +16,4 @@ hbnb_classes = {'BaseModel': BaseModel, 'City': City,
 
 storage = FileStorage()
 storage.reload()
+
