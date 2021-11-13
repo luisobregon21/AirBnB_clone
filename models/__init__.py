@@ -9,10 +9,10 @@ from models.state import State
 from models.amenity import Amenity
 from models.review import Review
 
-hbnb_classes = { 'BaseModel': BaseModel, 'City': City,
-        'User': User, 'Place': Place, 'State': State,
-        'Amenity': Amenity, 'Review': Review
-        }
+hbnb_classes = {'BaseModel': BaseModel, 'City': City,
+                'User': User, 'Place': Place, 'State': State,
+                'Amenity': Amenity, 'Review': Review
+                }
 
 storage = FileStorage()
 storage.reload()

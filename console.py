@@ -48,7 +48,7 @@ class HBNBCommand(cmd.Cmd):
         class_list = arg.split(" ")
         try:
             key = class_list[0] + "." + class_list[1]
-        except:
+        except Exception:
             pass
 
         if not arg:
@@ -70,7 +70,7 @@ class HBNBCommand(cmd.Cmd):
 
         try:
             key = class_list[0] + "." + class_list[1]
-        except:
+        except Exception:
             pass
 
         if not arg:
@@ -94,7 +94,7 @@ class HBNBCommand(cmd.Cmd):
 
         try:
             key = class_list[0] + "." + class_list[1]
-        except:
+        except Exception:
             pass
 
         if len(arg) == 0:
@@ -131,6 +131,7 @@ class HBNBCommand(cmd.Cmd):
     def Enter(self):
         ''' When there is no input '''
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

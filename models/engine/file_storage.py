@@ -9,6 +9,7 @@ from models.amenity import Amenity
 from models.state import State
 from models.review import Review
 
+
 class FileStorage:
     '''
     Class contains methods that serialize instances to a JSON file
@@ -20,7 +21,7 @@ class FileStorage:
     def all(self):
         '''Method returns dict __objects'''
         return self.__objects
-    
+
     def new(self, obj):
         '''Method sets in the obj with key'''
         self.__objects[obj.__class__.__name__ + '.' + obj.id] = obj
@@ -40,6 +41,6 @@ class FileStorage:
             with open(self.__file_path, 'r') as f:
                 temp_dic = json.loads(f.read())
                 for key, val in temp_dic.items():
-                        self.__objects[key] = eval(val["__class__"])(**val)
+                    self.__objects[key] = eval(val["__class__"])(**val)
         except IOError:
             pass
