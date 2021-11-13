@@ -8,13 +8,16 @@ from models import hbnb_classes, storage
 class HBNBCommand(cmd.Cmd):
     '''Class holds commands that a user can use in console'''
 
-    intro = 'Welcome to HBNB. Type help or ? to list commands.\n'
+    ''' intro = 'Welcome to HBNB. Type help or ? to list commands.\n' '''
     prompt = '(hbnb) '
 
     def default(self, arg):
         '''Runs class commands: <class name>.command()'''
         arg_list = arg.split('.')
-        if len(arg_list) == 2:
+        if len(arg_list) < 2:
+            print("*** Unknown Syntax", arg)
+            return
+        else:
             if arg_list[0] in hbnb_classes:
                 if arg_list[1] == "all()":
                     self.do_all(arg_list[0])
@@ -22,7 +25,7 @@ class HBNBCommand(cmd.Cmd):
                     self.do_count(arg_list[0])
 
     def do_count(self, arg):
-        '''Counts number of instances of a class'''
+        '''Counts number of instances of a class\n'''
         all_objs = storage.all()
         count = 0
         if arg not in hbnb_classes:
