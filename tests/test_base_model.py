@@ -16,6 +16,9 @@ class TestBaseModelClass(unittest.TestCase):
         self.L_base_model = BaseModel()
         self.J_base_model = BaseModel()
 
+    def test_str(self):
+        ''' Test __str__ method '''
+
     def test_Init(self):
         ''' Checks if Init works.
         checks if Instance works '''
