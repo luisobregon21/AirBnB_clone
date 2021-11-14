@@ -23,6 +23,23 @@ class HBNBCommand(cmd.Cmd):
                     self.do_all(arg_list[0])
                 elif arg_list[1] == "count()":
                     self.do_count(arg_list[0])
+                elif arg_list[1][0:4] == "show":
+                    if len(arg_list[1]) > 6:
+                        try:
+                            self.do_show(arg_list[0] + " " + arg_list[1][5:-1])
+                        except:
+                            print("** no instance found **")
+                    else:
+                        print("** instance id missing **")
+                elif arg_list[1][0:7] == "destroy":
+                    if len(arg_list[1]) > 9:
+                        try:
+                            self.do_destroy(arg_list[0] + " " +
+                                            arg_list[1][8:-1])
+                        except:
+                            print("** no instance found **")
+                    else:
+                        print("** instance id missing **")
 
     def do_count(self, arg):
         '''Counts number of instances of a class\n'''
@@ -87,8 +104,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         '''Deletes instance based on the class\n'''
-        class_list = arg.split(" ")
-
+        class_list = arg.split()
         try:
             key = class_list[0] + "." + class_list[1]
         except Exception:
