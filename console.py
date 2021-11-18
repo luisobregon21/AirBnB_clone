@@ -56,7 +56,7 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, arg):
         '''Creates an instance of the specified class\n'''
         if len(arg) == 0:
-            print("** class name missing ** ")
+            print("** class name missing **")
         elif arg in hbnb_classes:
             n_class = hbnb_classes[arg]()
             print(n_class.id)
@@ -90,7 +90,7 @@ class HBNBCommand(cmd.Cmd):
             pass
 
         if not arg:
-            print("** class name missing ** ")
+            print("** class name missing **")
         else:
             if class_list[0] in hbnb_classes:
                 if len(class_list) < 2:
