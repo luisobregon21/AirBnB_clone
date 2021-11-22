@@ -1,5 +1,6 @@
 header {
 	border-bottom: 1px solid #CCCCCC;
+	/* logo aligned on the left side of the page */
 	background: white url("../images/logo.png") 20px no-repeat;
 	height: 70px;
 	width: 100%;
