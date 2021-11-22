@@ -2,9 +2,19 @@ footer {
 	background-color: #00FF00;
 	height: 60px;
 	width: 100%;
+	/* The bottom property affects the vertical position of a positioned element.
+	 * This property has no effect on non-positioned elements.*/
 	bottom: 0;
+	/* The display property specifies the display behavior (the type of rendering box) of an element.
+	 * The flex property sets the flexible length on flexible items. */
 	display: flex;
+	/* The position property specifies the type of positioning method used for an element
+	 * The element is positioned relative to its first positioned (not static) ancestor element */
 	position: absolute;
+	/* The justify-content property aligns the flexible container's items
+	 * when the items do not use all available space on the main-axis (horizontally).
+	 * center: Items are positioned in the center of the container */
 	justify-content: center;
+	/* The align-items property specifies the default alignment for items inside the flexible container.*/
 	align-items: center;
 }

@@ -1,5 +1,8 @@
 header {
+	/*The background-color property specifies the background color of an element.*/
 	background-color: #FF0000;
+	/* The Height and width properties are used to set the height and width of an element.*/
 	height: 70px;
+	/* The % - Defines the height/width in percent of the containing block */
 	width: 100%;
 }
