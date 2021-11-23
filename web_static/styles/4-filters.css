@@ -1,8 +1,10 @@
+/* filter class*/
 .filters {
 	background-color: white;
 	height: 70px;
 	width: 100%;
 	border: 1px solid #DDDDDD;
+	/* The border-radius property defines the radius of the element's corners */
 	border-radius: 4px;
 	display: flex;
 	justify-content: center;
@@ -19,6 +21,7 @@ button {
 	margin: auto 30px auto auto;
 }
 
+/* hover selector changes the style of a button when you move the mouse over it*/
 button:hover {
 	opacity: 0.9;
 }
