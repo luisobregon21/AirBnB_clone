@@ -39,6 +39,7 @@ Creates an instance of the specified class
 
 (hbnb) 
 ```
+---
 ### License
 
 Copyright © 2022, [Luis Obregon](https://github.com/luisobregon21) and [Juial Torres](https://github.com/jtorres122).
